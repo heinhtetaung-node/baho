@@ -57,67 +57,28 @@
         <div class="left_content">
         <div class="single_post_content">
             <h2>News</h2>
-            <div class="single_post_content_left">
-              <ul class="business_catgnav  wow fadeInDown">
-                <li>
-                  <figure class="bsbig_fig"> <a href="#" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
-                    </figure>
-                </li>
-              </ul>
-            </div>
-            <div class="single_post_content_right">
-              <figure class="bsbig_fig">
-                <figcaption> <a href="#">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                 
-              </figure>
-            </div>
-          </div>
-         <div class="single_post_content">
-            <div class="single_post_content_left">
-              <ul class="business_catgnav  wow fadeInDown">
-                <li>
-                  <figure class="bsbig_fig"> <a href="#" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
-                    </figure>
-                </li>
-              </ul>
-            </div>
-            <div class="single_post_content_right">
-              <figure class="bsbig_fig">
-                <figcaption> <a href="#">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                 
-              </figure>
-            </div>
-          </div>
-          <div class="single_post_content">
-            <div class="single_post_content_left">
-              <ul class="business_catgnav  wow fadeInDown">
-                <li>
-                  <figure class="bsbig_fig"> <a href="#" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
-                    </figure>
-                </li>
-              </ul>
-            </div>
-            <div class="single_post_content_right">
-              <figure class="bsbig_fig">
-                <figcaption> <a href="#">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                 
-              </figure>
-            </div>
+              @foreach($posts as $p)         
+                  <div class="single_post_content">
+                    <div class="single_post_content_left">
+                      <ul class="business_catgnav  wow fadeInDown">
+                        <li>
+                          <figure class="bsbig_fig"> 
+                            <a href="#" class="featured_img">
+                              <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="" >
+                            </a>
+                          </figure>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="single_post_content_right">
+                      <figure class="bsbig_fig">
+                        <figcaption> <a href="#">  {{$p->title}} </a> </figcaption>
+                        <p>{{$p->short_description}}</p>                 
+                      </figure>
+                    </div>                      
+                  </div>
+              @endforeach
+
           </div>
         </div>
       </div>

@@ -11,25 +11,28 @@
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">          
-      <div class="single_post_content">
-        <h2>ဆရာေတာ္ၾကီး၏ အဘိဓမၼာပုိ႔ခ်ခ်က္စာအုပ္မ်ား</h2>
-        <ul class="photograph_nav  wow fadeInDown">
-          @foreach($posts as $e)
-          <li>
-            <div class="photo_grid">
-              <figure class="effect-layla"> 
-                <a href="#"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
-              </figure>
-              <h4>{{$e->title}}</h4>
-              <h2>Download</h2>
+          <div class="single_post_content">
+            <h2>Contact Us</h2>
+            <div class="contact_area">
+             <form action="#" class="contact_form">
+              <input class="form-control" type="text" placeholder="အမည္*">
+              <input class="form-control" type="email" placeholder="အဖအမည္*">
+              <input class="form-control" type="email" placeholder="ႏုိင္ငံသားမွတ္ပုံတင္အမွတ္*">
+              <input class="form-control" type="email" placeholder="ဖုန္းနံပါတ္*">
+              <textarea class="form-control" cols="30" rows="5" placeholder="ေနရပ္လိပ္စာအျပည့္အစုံ*"></textarea>
+              <input class="form-control" type="email" placeholder="ပရဟိတလုပ္ေနေသာအဖြဲ႔အစည္း*">
+              <input type="radio" name="gender" style="margin:0 20px 30px 20px;">ေယာက်္ားေလး
+              <input type="radio" name="gender" style="margin:0 20px 30px 20px;">မိန္းကေလး
+              <input class="form-control" type="email" placeholder="ဘုန္းၾကီးေက်ာင္းအမည္*">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ပါတီအဖြဲ႔၀င္ျဖစ္ခဲ့ပါက<input type="Checkbox" name="party" style="margin:0 20px 30px 20px;">
+              <input class="form-control" type="email" placeholder="ပညာအရည္အခ်င္း*">
+              <input type="submit" value="Send Message">
+            </form>
             </div>
-          </li>
-          @endforeach
-        </ul>
-      </div>
-      {{$posts->render()}}
+          </div>
     </div>
   </div>
+
 <div class="col-lg-4 col-md-4 col-sm-4">
   <aside class="right_content">
     <div class="latest_post">

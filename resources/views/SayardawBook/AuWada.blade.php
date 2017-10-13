@@ -12,24 +12,55 @@
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">          
       <div class="single_post_content">
-        <h2>ဆရာေတာ္ၾကီး၏ အဘိဓမၼာပုိ႔ခ်ခ်က္စာအုပ္မ်ား</h2>
-        <ul class="photograph_nav  wow fadeInDown">
-          @foreach($posts as $e)
-          <li>
-            <div class="photo_grid">
-              <figure class="effect-layla"> 
-                <a href="#"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
-              </figure>
-              <h4>{{$e->title}}</h4>
-              <h2>Download</h2>
-            </div>
-          </li>
-          @endforeach
-        </ul>
+        <h2>ဆရာေတာ္ၾကီး၏ ၾသ၀ါဒစာအုပ္မ်ား</h2>
+             <ul class="photograph_nav  wow fadeInDown">
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/></a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a  href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/> </a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+              <li>
+                <div class="photo_grid">
+                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
+                  <h4>Book Name</h4>
+                  <h2>Download</h2>
+                </div>
+              </li>
+            </ul>
       </div>
-      {{$posts->render()}}
     </div>
   </div>
+
 <div class="col-lg-4 col-md-4 col-sm-4">
   <aside class="right_content">
     <div class="latest_post">

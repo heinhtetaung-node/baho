@@ -55,11 +55,11 @@
                     <div class="col-md-9">
                         <select id="ctr_sub_id" class="form-control" name="sub_category_id">
                             <option value=""></option>
-                            {{-- 
+                         
                             @foreach($subcat as $sc)
                                 <option value="{{ $sc->id }}">{{ $sc->title }}</option>
                             @endforeach
-                            --}}
+                            
                         </select>
                     </div>
                 </div>

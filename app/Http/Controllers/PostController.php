@@ -29,6 +29,7 @@ class PostController extends Controller
     public function showPostsByCategory($category, $subcat=""){
         //echo $category; exit;
         $cat = Category::where('title', '=', $category)->get();
+        // dd($cat);
         $cat_id = "";
         foreach($cat as $c){
             $cat_id = $c->id;
@@ -54,9 +55,10 @@ class PostController extends Controller
         }
 
         $posts = $posts->orderby('updated_at', 'desc')->paginate(10);
-        //var_dump($posts);
+        // var_dump($posts);
 
         $view = str_replace(' ', '', $category.$subview);
+     
         return view($view,['posts'=>$posts]);
     }
 
@@ -144,7 +146,7 @@ class PostController extends Controller
         $arr=[
                 'title' => $request->title,
                 'main_category_id' => $request->main_category_id,
-                'sub_category_id' => $request->sub_category_id,
+                'sub_category_id' => ($request->sub_category_id)?$request->sub_category_id:'',
                 'short_description' => ($request->short_description)? $request->short_description : '',
                 'feature_photo' => $feature_photo,
                 'attach_file' => $attach_file,
