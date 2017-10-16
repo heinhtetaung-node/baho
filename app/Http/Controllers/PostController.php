@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Post;
 use App\Model\Category;
+use App\Form;
 use Validator;
 
 class PostController extends Controller
@@ -86,9 +87,6 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-
-        // 'title', 'main_category_id', 'sub_category_id', 'short_description', 'feature_photo', 'detail_description', 'detail_photo', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4', 'custom_field5'
-
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'main_category_id' => 'required',
@@ -149,7 +147,7 @@ class PostController extends Controller
                 'sub_category_id' => ($request->sub_category_id)?$request->sub_category_id:'',
                 'short_description' => ($request->short_description)? $request->short_description : '',
                 'feature_photo' => $feature_photo,
-                'attach_file' => $attach_file,
+                'attach_file' =>($request->file('attach_file'))? $attach_file:'',
                 'detail_description' => ($request->detail_description)? $request->detail_description : '',
                 'detail_photo' => $detail_photo,
                 'custom_field1' => ($request->custom_field1)? $request->custom_field1 : '', // for_ASO
@@ -176,15 +174,9 @@ class PostController extends Controller
     //store update post
     public function update($id, Request $request)
     {   
-        // $post= Post::findOrFail($id);
-
-         $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'main_category_id' => 'required',
-            'short_description' => 'required',
-            //'feature_photo' => 'required',
-            'detail_description' => 'required',
-            //'detail_photo' => 'required'
         ]);
         
         if ($validator->fails()) {
@@ -207,6 +199,19 @@ class PostController extends Controller
           }
         }
 
+        
+        $attach_file="";
+        if($request->file('attach_file')!=NULL){
+
+          $file = $request->file('attach_file');
+          
+          if($file->getClientOriginalExtension()=="pdf"){
+            
+            $attach_file = $file->getClientOriginalName();
+            $file->move($structure, $attach_file);
+          }
+        }
+
         $detail_photo="";
         if($request->file('detail_photo')!=NULL){
 
@@ -223,17 +228,19 @@ class PostController extends Controller
                 'id'=>$id,
                 'title' => $request->title,
                 'main_category_id' => $request->main_category_id,
-                'sub_category_id' => $request->sub_category_id,
-                'short_description' => $request->short_description,
+                'sub_category_id' => ($request->sub_category_id)?$request->sub_category_id:'',
+                'short_description' => ($request->short_description)? $request->short_description : '',
                 'feature_photo' => $feature_photo,
-                'detail_description' => $request->detail_description,
+                'attach_file' =>($request->file('attach_file'))? $attach_file:'',
+                'detail_description' => ($request->detail_description)? $request->detail_description : '',
                 'detail_photo' => $detail_photo,
-                'custom_field1' => ($request->custom_field1)? $request->custom_field1 : '',
+                'custom_field1' => ($request->custom_field1)? $request->custom_field1 : '', 
                 'custom_field2' => ($request->custom_field2)? $request->custom_field2 : '',
                 'custom_field3' => ($request->custom_field3)? $request->custom_field3 : '',
                 'custom_field4' => ($request->custom_field4)? $request->custom_field4 : '',
                 'custom_field5' => ($request->custom_field5)? $request->custom_field5 : '',
             ];
+        // dd($arr);
         $post = Post::findOrFail($id);
         // $input = $request->all();
         $post->fill($arr)->save();
@@ -244,7 +251,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.post_show',compact('post'));
+        return view('news_show',compact('post'));
     }
     //delete  post
     public function delete($id)
@@ -280,4 +287,47 @@ class PostController extends Controller
         $cat = Category::where('parent_id','=', '0')->pluck('title', 'id');
         return view('admin.post', ['posts'=>$posts, 'cat'=>$cat, 'subcat' => $subcat, 'sub_category_id' => $sub_category_id]);
      } 
+
+     public function download()
+     {
+        $downloads=Post::get('attach_file');
+        return view('download.viewfile',compact('downloads'));
+     }
+
+     public function form_store(Request $request)
+     {  
+        // dd($request->all());
+        // $validator = Validator::make($request->all(), [
+        //     'title' => 'required',
+        //     'main_category_id' => 'required',
+        //     //'short_description' => 'required',
+        //     //'feature_photo' => 'required',
+        //     //'detail_description' => 'required',
+        //     //'detail_photo' => 'required'
+        // ]);
+        
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //       ->withInput()
+        //       ->withErrors($validator); 
+        // }
+
+        $arr=[
+                'name'=>$request->name,
+                'father_name'=>$request->father_name,
+                'nrc'=>$request->nrc,
+                'phone_no'=>$request->phone_no, 
+                'address'=>$request->address,
+                'organization'=>$request->organization,              
+                // 'gender'->gender,
+                'monastery_name'=>$request->monastery_name,
+                'is_party'=>$request->is_party,
+                'education'=>$request->education,
+            ];
+        
+        // dd($arr);
+        $res=Form::create($arr);
+
+        return redirect()->back();
+     }
 }
