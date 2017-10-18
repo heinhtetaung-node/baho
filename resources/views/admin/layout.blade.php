@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Mahawthadar') }}</title>
+    <title>{{ config('app.name', 'www.baho.com') }}</title>
 
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -62,7 +62,7 @@
     <div id="logo-group">
 
       <!-- PLACE YOUR LOGO HERE -->
-      <span id="logo"> <center>Mahawthadar</center> </span>
+      <span id="logo"> <center>Baho</center> </span>
       <!-- END LOGO PLACEHOLDER -->
 
       <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
@@ -264,7 +264,7 @@
     <div class="login-info">
       <span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
         <a href="{{ route('admin.index') }}">
-          <img src="{{ asset('images/demo/logo.jpeg') }}">
+          <img src="{{ asset('images/logo.jpeg') }}">
           <span style="">
             Admin
           </span>
@@ -285,26 +285,18 @@
         <li class="">
           <a href="{{ route('admin.post') }}" title="Post"><i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Post</span></a>
         </li>
+        <li class="">
+          <a href="{{ route('admin.member') }}" title="Member"><i class="fa fa-user"></i> <span class="menu-item-parent">Member</span></a>
+        </li>
 
         <li class="">
           <a href="{{ route('admin.contact') }}" title="Contact"><i class="fa fa-support"></i> <span class="menu-item-parent">Contact</span></a>
         </li>
 
-        <li class="">
-          <a href="{{ route('admin.student') }}" title="Students"><i class="fa fa-user"></i> <span class="menu-item-parent">Students</span></a>
-        </li>
-
         <li class="{{ route('admin.user') }}">
           <a href="user" title="User"><i class="fa fa-user"></i> <span class="menu-item-parent">User</span></a>
         </li> 
-
-        <li class="">
-          <a href="{{ route('admin.teacher') }}" title="Teacher"><i class="fa fa-user"></i> <span class="menu-item-parent">Teacher</span></a>
-        </li> 
         
-        <li class="">
-          <a href="{{ route('admin.timetable') }}" title="TimeTable"><i class="fa fa-user"></i> <span class="menu-item-parent">TimeTable</span></a>
-        </li> 
       </ul>
     </nav>
     <span class="minifyme" data-action="minifyMenu"> 
@@ -347,7 +339,7 @@
   <div class="page-footer">
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <span class="txt-color-white">Mahawthadar <span class="hidden-xs"> - Administration Management System</span> © 2017-2018</span>
+        <span class="txt-color-white">Baho <span class="hidden-xs"> - Administration Management System</span> © 2017-2018</span>
       </div>
 
       <div class="col-xs-6 col-sm-6 text-right hidden-xs">

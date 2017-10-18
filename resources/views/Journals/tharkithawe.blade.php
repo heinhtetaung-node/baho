@@ -14,50 +14,26 @@
       <div class="single_post_content">
         <h2>သာကီေသြး ဂ်ာနယ္မ်ား</h2>
              <ul class="photograph_nav  wow fadeInDown">
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/></a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a  href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
+                  @foreach($posts as $e)
+                  <li>
+                    <div class="photo_grid">
+                      <figure class="effect-layla"> 
+                        <a href="{{asset('upload/posts/'.$e->feature_photo)}}"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                      </figure>
+                      <h4>{{$e->title}}</h4>
+                      <h2>
+                        <a href="{{$e->attach_file}}" download="{{$e->attach_file}}">
+                          <i class="glyphicon glyphicon-download">
+                            Download
+                          </i>
+                      </a>
+                      </h2>
+                    </div>
+                  </li>
+                  @endforeach
             </ul>
       </div>
+       {{$posts->render()}}
     </div>
   </div>
 

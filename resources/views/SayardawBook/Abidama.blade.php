@@ -18,10 +18,16 @@
           <li>
             <div class="photo_grid">
               <figure class="effect-layla"> 
-                <a href="#"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                <a href="{{asset('upload/posts/'.$e->feature_photo)}}"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
               </figure>
               <h4>{{$e->title}}</h4>
-              <h2>Download</h2>
+              <h2>
+                <a href="{{$e->attach_file}}" download="{{$e->attach_file}}">
+                  <i class="glyphicon glyphicon-download">
+                    Download
+                  </i>
+              </a>
+              </h2>
             </div>
           </li>
           @endforeach

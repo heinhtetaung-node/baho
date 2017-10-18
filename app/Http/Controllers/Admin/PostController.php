@@ -111,7 +111,7 @@ class PostController extends Controller
         $arr=[
                 'title' => $request->title,
                 'main_category_id' => $request->main_category_id,
-                'sub_category_id' => $request->sub_category_id,
+                'sub_category_id' => ($request->sub_category_id)?$request->sub_category_id : '0',
                 'short_description' => ($request->short_description)? $request->short_description : '',
                 'feature_photo' => $feature_photo,
                 'attach_file' => $attach_file,
@@ -263,5 +263,10 @@ class PostController extends Controller
      {
        $members= Form::orderby('id', 'desc')->paginate(10);
         return view('admin.member',['members'=>$members]);
+     }
+
+     public function member_search()
+     {
+        
      }
 }
