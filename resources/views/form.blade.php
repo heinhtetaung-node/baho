@@ -14,18 +14,56 @@
           <div class="single_post_content">
             <h2>Contact Us</h2>
             <div class="contact_area">
-             <form action="#" class="contact_form">
-              <input class="form-control" type="text" placeholder="အမည္*">
-              <input class="form-control" type="email" placeholder="အဖအမည္*">
-              <input class="form-control" type="email" placeholder="ႏုိင္ငံသားမွတ္ပုံတင္အမွတ္*">
-              <input class="form-control" type="email" placeholder="ဖုန္းနံပါတ္*">
-              <textarea class="form-control" cols="30" rows="5" placeholder="ေနရပ္လိပ္စာအျပည့္အစုံ*"></textarea>
-              <input class="form-control" type="email" placeholder="ပရဟိတလုပ္ေနေသာအဖြဲ႔အစည္း*">
-              <input type="radio" name="gender" style="margin:0 20px 30px 20px;">ေယာက်္ားေလး
-              <input type="radio" name="gender" style="margin:0 20px 30px 20px;">မိန္းကေလး
-              <input class="form-control" type="email" placeholder="ဘုန္းၾကီးေက်ာင္းအမည္*">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ပါတီအဖြဲ႔၀င္ျဖစ္ခဲ့ပါက<input type="Checkbox" name="party" style="margin:0 20px 30px 20px;">
-              <input class="form-control" type="email" placeholder="ပညာအရည္အခ်င္း*">
+            <!-- for success message -->
+            @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+                  <p>{{ $message }}</p>
+              </div>
+             @endif
+             <form  class="contact_form" method="POST" action="{{ route('form.store') }}">
+              {!! csrf_field() !!}
+              @if ($errors->has('name'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('name') }}</strong>
+                  </span>
+              @endif
+              <input class="form-control" type="text" name="name" placeholder="အမည္*">
+              
+               @if ($errors->has('father_name'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('father_name') }}</strong>
+                  </span>
+              @endif
+
+              <input class="form-control" type="text" name="father_name" placeholder="အဖအမည္*">
+
+             @if ($errors->has('nrc'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('nrc') }}</strong>
+                  </span>
+              @endif
+              <input class="form-control" type="text" name="nrc" placeholder="ႏုိင္ငံသားမွတ္ပုံတင္အမွတ္*">
+               
+               @if ($errors->has('phone_no'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('phone_no') }}</strong>
+                  </span>
+              @endif
+              <input class="form-control" type="text" name="phone_no" placeholder="ဖုန္းနံပါတ္*">
+              
+              @if ($errors->has('address'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('address') }}</strong>
+                  </span>
+              @endif
+              <textarea class="form-control" cols="30" rows="5" placeholder="ေနရပ္လိပ္စာအျပည့္အစုံ*" name="address"></textarea>
+
+              <input class="form-control" type="text" name="organization" placeholder="ပရဟိတလုပ္ေနေသာအဖြဲ႔အစည္း*">
+              <input type="radio" name="gender" value="male"  style="margin:0 20px 30px 20px;">ေယာက်္ားေလး
+              <input type="radio" name="gender" value="female" style="margin:0 20px 30px 20px;">မိန္းကေလး
+              <input class="form-control" name="monastery_name" type="text" placeholder="ဘုန္းၾကီးေက်ာင္းအမည္*">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ပါတီအဖြဲ႔၀င္ျဖစ္ခဲ့ပါက<input type="Checkbox" name="is_party" style="margin:0 20px 30px 20px;" value="1">
+              <input class="form-control" type="text" name="education" placeholder="ပညာအရည္အခ်င္း*">
               <input type="submit" value="Send Message">
             </form>
             </div>
@@ -120,4 +158,7 @@
 @section('scripts')
 @parent
 <!-- your custom script here -->
+<script>
+  $('.alert-success').fadeIn().delay(5000).fadeOut();
+</script>
 @endsection

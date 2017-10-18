@@ -56,9 +56,9 @@
                         <select id="ctr_sub_id" class="form-control" name="sub_category_id">
                             <option value=""></option>
                          
-                            @foreach($subcat as $sc)
+                           <!--  @foreach($subcat as $sc)
                                 <option value="{{ $sc->id }}">{{ $sc->title }}</option>
-                            @endforeach
+                            @endforeach -->
                             
                         </select>
                     </div>

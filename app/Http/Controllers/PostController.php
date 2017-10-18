@@ -8,7 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Model\Post;
 use App\Model\Category;
 use App\Form;
+use App\Contact;
 use Validator;
+use Mail;
+use App\Mail\Email;
 
 class PostController extends Controller
 {
@@ -293,24 +296,23 @@ class PostController extends Controller
         $downloads=Post::get('attach_file');
         return view('download.viewfile',compact('downloads'));
      }
-
+     // member registration form store
      public function form_store(Request $request)
      {  
         // dd($request->all());
-        // $validator = Validator::make($request->all(), [
-        //     'title' => 'required',
-        //     'main_category_id' => 'required',
-        //     //'short_description' => 'required',
-        //     //'feature_photo' => 'required',
-        //     //'detail_description' => 'required',
-        //     //'detail_photo' => 'required'
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'father_name' => 'required',
+            'nrc' => 'required',
+            'phone_no' => 'required',
+            'address' => 'required',
+        ]);
         
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //       ->withInput()
-        //       ->withErrors($validator); 
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()
+              ->withInput()
+              ->withErrors($validator); 
+        }
 
         $arr=[
                 'name'=>$request->name,
@@ -318,16 +320,55 @@ class PostController extends Controller
                 'nrc'=>$request->nrc,
                 'phone_no'=>$request->phone_no, 
                 'address'=>$request->address,
-                'organization'=>$request->organization,              
-                // 'gender'->gender,
-                'monastery_name'=>$request->monastery_name,
-                'is_party'=>$request->is_party,
-                'education'=>$request->education,
+                'organization'=>($request->organization)? $request->organization: '',              
+                'gender'=>$request->gender,
+                'monastery_name'=>($request->monastery_name)?$request->monastery_name:'',
+                'is_party'=>($request->is_party)?$request->is_party:'0',
+                'education'=>($request->education)?$request->education:'',
             ];
         
         // dd($arr);
-        $res=Form::create($arr);
+        $user=Form::create($arr);
+        Mail::send('emails.memberEmail', ['user' => $user], function ($m) use ($user) 
+        {
+            $m->to('admin@admin.com', 'admin')
+              ->subject('Receiving Mail From Visitor : ' . $user->name);
+        });
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Thanks for your registeration!');
+     }
+
+     // contact form store
+    public function contact_store(Request $request)
+    {  
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email'=> 'required|email|unique:contact_form',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+              ->withInput()
+              ->withErrors($validator); 
+        }
+
+        $arr=[
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'comment'=>($request->comment)? $request->comment:'',
+            ];
+        
+        // dd($arr);
+        $user=Contact::create($arr);
+        \Mail::to($user)->send(new Email);
+
+        Mail::send('emails.contactEmail', ['user' => $user], function ($m) use ($user) 
+        {
+            $m->from($user->email, $user->name);
+            $m->to('admin@admin.com', 'admin')
+              ->subject('Receiving Mail From Visitor : ' . $user->name);
+        });
+        return redirect()->back()->with('success','Thanks for contacting us!');
      }
 }

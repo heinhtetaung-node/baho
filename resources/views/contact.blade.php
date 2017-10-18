@@ -14,10 +14,28 @@
       <div class="single_post_content">
             <h2>Contact Us</h2>
             <div class="contact_area">
-             <form action="#" class="contact_form">
-              <input class="form-control" type="text" placeholder="Name*">
-              <input class="form-control" type="email" placeholder="Email*">
-              <textarea class="form-control" cols="30" rows="10" placeholder="Message*"></textarea>
+            <!-- for success message -->
+            @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+                  <p>{{ $message }}</p>
+              </div>
+             @endif
+             <form method="POST" action="{{ route('contact.store') }}" class="contact_form">
+               {!! csrf_field() !!}
+              @if ($errors->has('name'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('name') }}</strong>
+                  </span>
+              @endif
+              <input class="form-control" name="name" type="text" placeholder="Name*">
+
+               @if ($errors->has('email'))
+                  <span class="help-block" style="color: #b94a48">
+                      <strong>{{ $errors->first('email') }}</strong>
+                  </span>
+              @endif
+              <input class="form-control" name="email" type="email" placeholder="Email*">
+              <textarea name="comment" class="form-control" cols="30" rows="10" placeholder="Message*"></textarea>
               <input type="submit" value="Send Message">
             </form>
             </div>
@@ -112,4 +130,7 @@
 @section('scripts')
 @parent
 <!-- your custom script here -->
+<script>
+  $('.alert-success').fadeIn().delay(5000).fadeOut();
+</script>
 @endsection

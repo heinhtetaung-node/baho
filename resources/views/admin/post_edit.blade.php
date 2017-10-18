@@ -79,6 +79,20 @@
                     </div>
                 </div>
 
+                <div class="form-group{{ $errors->has('attach_file') ? ' has-error' : '' }}">
+                    <label class="col-md-2 control-label">Attach File</label>
+
+                    <div class="col-md-9">
+                        {{ $posts->attach_file }}
+                        <input type="file" class="form-control" name="attach_file" >
+                        @if ($errors->has('attach_file'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('attach_file') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="form-group{{ $errors->has('short_description') ? ' has-error' : '' }}">
                     <label class="col-md-2 control-label">Short Description</label>
 

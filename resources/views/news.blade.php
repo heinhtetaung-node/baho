@@ -19,7 +19,7 @@
                 <ul class="business_catgnav  wow fadeInDown">
                   <li>
                     <figure class="bsbig_fig"> 
-                      <a href="#" class="featured_img">
+                      <a href="{{route('news.show',$p->id)}}" class="featured_img">
                         <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="" >
                       </a>
                     </figure>
@@ -28,13 +28,14 @@
               </div>
               <div class="single_post_content_right">
                 <figure class="bsbig_fig">
-                  <figcaption> <a href="#">  {{$p->title}} </a> </figcaption>
+                  <figcaption> <a href="{{route('news.show',$p->id)}}">  {{$p->title}} </a> </figcaption>
                   <p>{{$p->short_description}}</p>                 
                 </figure>
               </div>                      
             </div>
             @endforeach
           </div>
+          {{$posts->render()}}
     </div>
   </div>
 
