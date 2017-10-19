@@ -56,7 +56,8 @@
 
                     <div class="col-md-9">
                         <select id="ctr_sub_id" class="form-control" name="sub_category_id">
-                            <option value="{{$posts->SubCategory->id}}">{{$posts->SubCategory->title}}</option>
+                            <option value="{{ isset($posts->SubCategory->id) ? $posts->SubCategory->id : ''}}">{{ isset($posts->SubCategory->title)? $posts->SubCategory->title : '' }}</option> 
+                           
                             @foreach($subcat as $sc)
                                 @if($sc->parent_id==$posts->main_category_id && $posts->SubCategory->id!=$sc->id))
                                     <option value="{{ $sc->id }}">{{ $sc->title }}</option>

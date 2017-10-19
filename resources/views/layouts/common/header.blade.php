@@ -25,7 +25,7 @@
             <li><a href="{{route('user.category.sub', ['category' => 'Journals', 'sub' => 'aungzayartu'])}}">ေအာင္ေဇယ်တု</a></li>
           </ul>
         </li>
-        <li><a href="{{route('user.category', ['category' => 'photo'])}}">လႈပ္ရွားမႈဓာတ္ပုံမ်ား</a></li>
+        <li><a href="{{route('user.category', ['category' => 'Gallery'])}}">လႈပ္ရွားမႈဓာတ္ပုံမ်ား</a></li>
         <li><a href="{{route('user.category', ['category' => 'news'])}}">သတင္းမ်ား</a></li>
         <li><a href="{{route('user.category', ['category' => 'form'])}}">၀င္ခြင့္ေဖာင္</a></li>
         <li><a href="{{route('user.category', ['category' => 'nation'])}}">တုိင္းေဒသၾကီးအဖြဲ႔(၁၄)ခု</a></li>

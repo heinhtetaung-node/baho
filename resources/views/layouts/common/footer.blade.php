@@ -5,26 +5,16 @@
         <div class="footer_widget wow fadeInLeftBig">
           <h2>တည္ေထာင္သူမ်ား</h2>
            <ul class="spost_nav">
+            @foreach($founders as $f)
             <li>
-              <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="#" class="catg_title">U Mg Mg</a><p>Lorem ipsum dolor sit amet, consectetur</p></div>
+              <div class="media wow fadeInDown"> 
+                <a href="#" class="media-left"> 
+                  <img src="{{ asset('upload/posts/'.$f->feature_photo) }}" alt="founder photo" >
+                </a>
+                <div class="media-body"> <a href="#" class="catg_title">{{$f->title}}</a><p>{{$f->short_description}}</p></div>
               </div>
             </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="#" class="catg_title"> U Aung</a><p>Lorem ipsum dolor sit amet, consectetur</p> </div>                   
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="#" class="catg_title"> U Hla</a> <p>Lorem ipsum dolor sit amet, consectetur</p></div>                  
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="#" class="catg_title"> U Soe</a> <p>Lorem ipsum dolor sit amet, consectetur</p></div>
-              </div>
-            </li>
+            @endforeach
           </ul>
         </div>
       </div>

@@ -27,12 +27,30 @@ class HomeController extends Controller
     {
         // $data['founders'] = Post::where('main_category_id',1)->where('sub_category_id',3)->orderby('id', 'desc')->limit(3)->get();
         $data['news'] = Post::where('main_category_id',2)->orderby('id', 'desc')->limit(3)->get();
+        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
+        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
+        $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
         // $data['about'] = Post::where('main_category_id',23)->where('sub_category_id',25)->orderby('id', 'asc')->limit(2)->get();
         // $data['slider'] = Post::where('main_category_id',23)->where('sub_category_id',24)->get();
         // var_dump($data);
         // dd($data);
-        return view('home',['posts'=>$data['news']]);
+        return view('home',[
+            'posts'=>$data['news'],
+            'donors'=>$data['donor'],
+            'process'=>$data['process'],
+            'founders'=>$data['founders']
+        ]);
     }
+
+    // public function founders()
+    // {
+    //     $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
+
+    //     return view('layouts.common.footer',[
+    //         'founders'=>$data['founders']
+
+    //     ]);
+    // }
 
     public function dosth() // Edited by HeinHtetAung for admin_user_middleware
     {

@@ -60,10 +60,18 @@ class PostController extends Controller
 
         $posts = $posts->orderby('updated_at', 'desc')->paginate(10);
         // var_dump($posts);
+        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
+        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
+        $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
 
         $view = str_replace(' ', '', $category.$subview);
      
-        return view($view,['posts'=>$posts]);
+        return view($view,[
+                'posts'=>$posts,
+                'donors'=>$data['donor'],
+                'process'=>$data['process'],
+                'founders'=>$data['founders']
+            ]);
     }
 
     public function index()

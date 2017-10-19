@@ -88,6 +88,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::get('/', ['as' => 'user.index', 'uses' => 'HomeController@index']);
 
+
 Route::get('/show/{category}', ['as' => 'user.category', 'uses' => 'PostController@showPostsByCategory']);
 
 Route::get('/show/{category}/{sub}', ['as' => 'user.category.sub', 'uses' => 'PostController@showPostsByCategory']);
