@@ -66,7 +66,7 @@
   </aside>
 </div>
 
-  <div class="col-lg-4 col-md-4 col-sm-4">
+  <div class="col-lg-4 col-md-4 col-sm-4" style="float: right; margin-top: 50px;">
     <aside class="right_content">
       <div class="single_sidebar">
         <h2>လုပ္ငန္းစဥ္မ်ား</h2>

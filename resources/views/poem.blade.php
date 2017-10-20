@@ -14,54 +14,31 @@
           <div class="single_post_content">
             <h2>ကဗ်ာ/ေဆာင္းပါမ်ား</h2>
              <ul class="photograph_nav  wow fadeInDown">
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/></a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a  href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  <h4>Book Name</h4>
-                  <h2>Download</h2>
-                </div>
-              </li>
+                @foreach($posts as $poem)
+                <li>
+                  <div class="photo_grid">
+                    <figure class="effect-layla"> 
+                      <a href="{{asset('upload/posts/'.$poem->feature_photo)}}"> 
+                        <img src="{{ asset('upload/posts/'.$poem->feature_photo) }}" alt="" >
+                      </a> 
+                    </figure>
+                    <h4>{{$poem->title}}</h4>
+                    <h2>
+                      <a href="{{$poem->attach_file}}" download="{{$poem->attach_file}}">
+                        <i class="glyphicon glyphicon-download">
+                          Download
+                        </i>
+                    </a>
+                    </h2>
+                  </div>
+                </li>
+                @endforeach
             </ul>
           </div>
     </div>
   </div>
 
-<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="col-lg-4 col-md-4 col-sm-4" >
   <aside class="right_content">
     <div class="latest_post">
       <h2>အလွဴရွင္မ်ား</h2>
@@ -91,7 +68,7 @@
   </aside>
 </div>
 
-  <div class="col-lg-4 col-md-4 col-sm-4">
+  <div class="col-lg-4 col-md-4 col-sm-4" style="float: right; margin-top: 50px;">
     <aside class="right_content">
       <div class="single_sidebar">
         <h2>လုပ္ငန္းစဥ္မ်ား</h2>

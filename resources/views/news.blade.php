@@ -50,8 +50,7 @@
         <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
         <ul class="latest_postnav">
            @foreach($donors as $d)
-              <li>
-                
+              <li> 
                 <div class="media"> 
                   <a href="#" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
@@ -64,7 +63,7 @@
                   </div>
                 </div>
               </li>
-              @endforeach
+            @endforeach
         </ul>
         <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
       </div>
@@ -72,7 +71,7 @@
   </aside>
 </div>
 
-  <div class="col-lg-4 col-md-4 col-sm-4">
+  <div class="col-lg-4 col-md-4 col-sm-4" style="float: right; margin-top: 50px;">
     <aside class="right_content">
       <div class="single_sidebar">
         <h2>လုပ္ငန္းစဥ္မ်ား</h2>
