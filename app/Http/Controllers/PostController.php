@@ -58,7 +58,7 @@ class PostController extends Controller
             $posts = $posts->where('sub_category_id','=',$subcat_id);
         }
 
-        $posts = $posts->orderby('updated_at', 'desc')->paginate(10);
+        $posts = $posts->orderby('updated_at', 'desc')->paginate(12);
         // var_dump($posts);
         $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
         $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
@@ -73,7 +73,7 @@ class PostController extends Controller
                 'founders'=>$data['founders']
             ]);
     }
-
+/****** no need
     public function index()
     {
         $cat = Category::where('parent_id','=', '0')->pluck('title', 'id');
@@ -258,12 +258,7 @@ class PostController extends Controller
 
         return redirect()->route('admin.post');
     }
-    //show post by id
-    public function show($id)
-    {
-        $post = Post::findOrFail($id);
-        return view('news_show',compact('post'));
-    }
+
     //delete  post
     public function delete($id)
     {
@@ -298,6 +293,22 @@ class PostController extends Controller
         $cat = Category::where('parent_id','=', '0')->pluck('title', 'id');
         return view('admin.post', ['posts'=>$posts, 'cat'=>$cat, 'subcat' => $subcat, 'sub_category_id' => $sub_category_id]);
      } 
+    ************ **/ 
+    //show post by id
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
+        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
+        $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
+        return view('news_show',[
+                'post'=>$post,
+                'donors'=>$data['donor'],
+                'process'=>$data['process'],
+                'founders'=>$data['founders']
+            ]);
+    }
 
      public function download()
      {

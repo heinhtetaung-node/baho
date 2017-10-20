@@ -42,16 +42,6 @@ class HomeController extends Controller
         ]);
     }
 
-    // public function founders()
-    // {
-    //     $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
-
-    //     return view('layouts.common.footer',[
-    //         'founders'=>$data['founders']
-
-    //     ]);
-    // }
-
     public function dosth() // Edited by HeinHtetAung for admin_user_middleware
     {
         return "awesome";

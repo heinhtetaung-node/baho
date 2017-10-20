@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.css') }}">
     @show
 
     <script type="text/javascript">

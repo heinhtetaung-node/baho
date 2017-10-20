@@ -28,6 +28,9 @@
               </div>
               <div class="single_post_content_right">
                 <figure class="bsbig_fig">
+                  <label>{{$p->Category->title}}>>{{$p->SubCategory->title}}</label>
+                  <br>
+                  <small>Post on:&nbsp; {{$p->created_at->toFormattedDateString()}}</small>
                   <figcaption> <a href="{{route('news.show',$p->id)}}">  {{$p->title}} </a> </figcaption>
                   <p>{{$p->short_description}}</p>                 
                 </figure>

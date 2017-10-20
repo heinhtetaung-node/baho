@@ -68,29 +68,22 @@
       <div class="latest_post_container">
         <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
         <ul class="latest_postnav">
-          <li>
-            <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore . </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore . </p>
-              </div>
-            </div>
-          </li>
+           @foreach($donors as $d)
+              <li>
+                
+                <div class="media"> 
+                  <a href="#" class="media-left"> 
+                    <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
+                  </a>
+                  <div class="media-body"> 
+                    <a href="#" class="catg_title">
+                      {{$d->title}}
+                    </a>
+                  <p>{{$d->short_description}}</p>
+                  </div>
+                </div>
+              </li>
+              @endforeach
         </ul>
         <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
       </div>
@@ -103,30 +96,21 @@
       <div class="single_sidebar">
         <h2>လုပ္ငန္းစဥ္မ်ား</h2>
         <ul class="spost_nav">
-          <li>
-            <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title">U Mg Mg</a></div>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
+          @foreach($process as $p)
+          <li>                
+            <div class="media"> 
+              <a href="#" class="media-left"> 
+                <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="donor photo" >
+              </a>
+              <div class="media-body"> 
+                <a href="#" class="catg_title">
+                  {{$p->title}}
+                </a>
+              <p>{{$p->short_description}}</p>
+              </div>
             </div>
           </li>
-          <li>
-            <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> U Aung</a> </div>
-               <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </li>
-          <li>
-            <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> U Hla</a> </div>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </li>
-          <li>
-            <div class="media wow fadeInDown"> <a href="#" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-              <div class="media-body"> <a href="#" class="catg_title"> U Soe</a> </div>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </li>
+          @endforeach
         </ul>
       </div>   
       <div class="single_sidebar wow fadeInDown">             

@@ -22,15 +22,15 @@
         <div class="footer_widget wow fadeInDown">
           <h2>Tag</h2>
           <ul class="tag_nav">
-            <li><a href="index.php">ပင္မစာမ်က္ႏွာ</a></li>
-            <li><a href="#">ဆရာေတာ္ၾကီးစာအုပ္မ်ား</a></li>
-            <li><a href="#">ဂ်ာနယ္မ်ား</a></li>
-            <li><a href="photo.php">လႈပ္ရွားမႈဓာတ္ပုံမ်ား</a></li>
-            <li><a href="news.php">သတင္းမ်ား</a></li>
-            <li><a href="form.php">၀င္ခြင့္ေဖာင္</a></li>
-            <li><a href="nation.php">တုိင္းေဒသၾကီးအဖြဲ႔(၁၄)ခု</a></li>
-            <li><a href="poem.php">ကဗ်ာ/ေဆာင္းပါမ်ား</a></li>
-            <li><a href="contact.php">ဆက္သြယ္ရန္</a></li>
+            <li><a href="{{ route('user.index') }}">ပင္မစာမ်က္ႏွာ</a></li>
+            <li><a href="{{ route('user.category.sub', ['category' => 'SayardawBook', 'sub' => 'Abidama']) }}">ဆရာေတာ္ၾကီးစာအုပ္မ်ား</a></li>
+            <li><a href="{{route('user.category.sub', ['category' => 'Journals', 'sub' => 'tharkithawe'])}}">ဂ်ာနယ္မ်ား</a></li>
+            <li><a href="{{route('user.category', ['category' => 'Gallery'])}}">လႈပ္ရွားမႈဓာတ္ပုံမ်ား</a></li>
+            <li><a href="{{route('user.category', ['category' => 'news'])}}">သတင္းမ်ား</a></li>
+            <li><a href="{{route('user.category', ['category' => 'form'])}}">၀င္ခြင့္ေဖာင္</a></li>
+            <li><a href="{{route('user.category', ['category' => 'nation'])}}">တုိင္းေဒသၾကီးအဖြဲ႔(၁၄)ခု</a></li>
+            <li><a href="{{route('user.category', ['category' => 'poem'])}}">ကဗ်ာ/ေဆာင္းပါမ်ား</a></li>
+            <li><a href="{{route('user.category', ['category' => 'contact'])}}">ဆက္သြယ္ရန္</a></li>
           </ul>
         </div>
       </div>
