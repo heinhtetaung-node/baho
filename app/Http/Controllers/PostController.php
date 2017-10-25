@@ -380,14 +380,14 @@ class PostController extends Controller
         
         // dd($arr);
         $user=Contact::create($arr);
-        \Mail::to($user)->send(new Email);
 
-        Mail::send('emails.contactEmail', ['user' => $user], function ($m) use ($user) 
-        {
-            $m->from($user->email, $user->name);
-            $m->to('admin@admin.com', 'admin')
-              ->subject('Receiving Mail From Visitor : ' . $user->name);
-        });
+        /**tempory commit out **/
+        // Mail::send('emails.contactEmail', ['user' => $user], function($m) use ($user)
+        // {                                   
+        //     $m->from('admin@baho.com', 'Baho Admin'); 
+        //     $m->to([env("ADMIN_EMAIL", "fancystar7@gmail.com"), $user->email]);
+        //     $m->subject('Receiving Mail From Visitor : ' . $user->name); 
+        // }); 
         return redirect()->back()->with('success','Thanks for contacting us!');
      }
 }
