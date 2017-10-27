@@ -99,7 +99,7 @@ Route::post('/form',['as'=>'form.store', 'uses'=>'PostController@form_store']);
 
 Route::post('/contact',['as'=>'contact.store', 'uses'=>'PostController@contact_store']);
 
-Route::get('/download/{attach_file}', [
+Route::get('/download/{id}', [
 	'as' => 'downloadfile', 'uses' => 'PostController@downfun']);
 Route::get('/view/{attach_file}', [
 	'as' => 'viewfile', 'uses' => 'PostController@viewfile']);

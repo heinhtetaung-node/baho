@@ -23,12 +23,16 @@
           <li>
             <div class="photo_grid">
               <figure class="effect-layla"> 
+                @if($e->attach_file!='')
                 <a href="{{route('viewfile',$e->attach_file)}}" target="_blank"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                @else
+                 <a href="#" > <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                @endif
               </figure>
               <h4>{{$e->title}}</h4>
               <h2>
                 <!-- <a href="{{route('downloadfile',$e->id)}}" download="{{$e->attach_file}}"> -->
-                <a href="{{route('downloadfile',$e->attach_file)}}">
+                <a href="{{route('downloadfile',$e->id)}}">
                   <i class="glyphicon glyphicon-download">
                     Download
                   </i>

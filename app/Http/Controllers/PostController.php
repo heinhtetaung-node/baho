@@ -387,9 +387,9 @@ class PostController extends Controller
         return redirect()->back()->with('success','Thanks for contacting us!');
      }
 
-    public function downfun($attach_file)
+    public function downfun($id)
     {  
-        $post= Post::where('attach_file',$attach_file)->get()->first();
+        $post= Post::where('id',$id)->get()->first();
 
         $file= public_path(). "/upload/posts/$post->attach_file";
         $headers = array(
