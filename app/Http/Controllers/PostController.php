@@ -12,7 +12,8 @@ use App\Contact;
 use Validator;
 use Mail;
 use App\Mail\Email;
-
+use Response;
+use File;
 class PostController extends Controller
 {
     /**
@@ -310,11 +311,6 @@ class PostController extends Controller
             ]);
     }
 
-     public function download()
-     {
-        $downloads=Post::get('attach_file');
-        return view('download.viewfile',compact('downloads'));
-     }
      // member registration form store
      public function form_store(Request $request)
      {  
@@ -390,4 +386,42 @@ class PostController extends Controller
         // }); 
         return redirect()->back()->with('success','Thanks for contacting us!');
      }
+
+    public function downfun($attach_file)
+    {  
+        $post= Post::where('attach_file',$attach_file)->get()->first();
+
+        $file= public_path(). "/upload/posts/$post->attach_file";
+        $headers = array(
+                  'Content-Type: application/pdf',
+                );
+
+        if ($post->attach_file=="")
+        {
+            // echo "not exists";
+            return redirect()->back()->withErrors(['File not exist!']);
+        }
+        else{
+           return Response::download($file,$post->attach_file, $headers);
+        }  
+    }
+
+    public function viewfile($attach_file)
+    {
+        $post= Post::where('attach_file',$attach_file)->get()->first();
+        $filename = $post->attach_file;
+        $path = public_path(). "/upload/posts/$post->attach_file";
+
+        if ($post->attach_file=="")
+        {
+            // echo "not exists";
+            return redirect()->back()->withErrors(['File not exist!']);
+        }
+        else{
+              return Response::make(file_get_contents($path), 200, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'"'
+            ]);
+        }
+    }
 }
