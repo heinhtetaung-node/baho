@@ -36,7 +36,7 @@
 
                     <div class="col-md-9">
                         <select id="ctr_parent_id" class="form-control" name="main_category_id">
-                            <option value=""></option>
+                            <option value="old('main_category_id') }}"></option>
                             @foreach($cat as $c)
                                 <option value="{{ $c->id }}">{{ $c->title }}</option>
                             @endforeach
@@ -54,7 +54,7 @@
 
                     <div class="col-md-9">
                         <select id="ctr_sub_id" class="form-control" name="sub_category_id">
-                            <option value=""></option>
+                            <option value="{{old('sub_category_id')}}"></option>
                          
                            <!--  @foreach($subcat as $sc)
                                 <option value="{{ $sc->id }}">{{ $sc->title }}</option>
@@ -68,7 +68,7 @@
                     <label class="col-md-2 control-label">Feature Photo</label>
 
                     <div class="col-md-9">
-                        <input type="file" class="form-control" name="feature_photo">@if ($errors->has('feature_photo'))
+                        <input type="file" class="form-control" value="{{old('feature_photo')}}" name="feature_photo">@if ($errors->has('feature_photo'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('feature_photo') }}</strong>
                             </span>
@@ -80,7 +80,7 @@
                     <label class="col-md-2 control-label">Attach File</label>
 
                     <div class="col-md-9">
-                        <input type="file" class="form-control" name="attach_file">@if ($errors->has('attach_file'))
+                        <input type="file" class="form-control" value="{{old('attach_file')}}" name="attach_file">@if ($errors->has('attach_file'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('attach_file') }}</strong>
                             </span>

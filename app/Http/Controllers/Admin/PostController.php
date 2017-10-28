@@ -57,10 +57,11 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'main_category_id' => 'required',
-            //'short_description' => 'required',
-            //'feature_photo' => 'required',
-            //'detail_description' => 'required',
-            //'detail_photo' => 'required'
+            'short_description' => 'required',
+            'feature_photo' => 'required',
+            'detail_description' => 'required',
+            // 'detail_photo' => 'required',
+            'attach_file'=>'max:50000',
         ]);
         
         if ($validator->fails()) {
@@ -68,8 +69,6 @@ class PostController extends Controller
               ->withInput()
               ->withErrors($validator); 
         }
-       
-
         $structure= "upload/posts/";
         $feature_photo="";
         if($request->file('feature_photo')!=NULL){
