@@ -14,17 +14,24 @@
           <div class="single_post_content">
             <h2>ကဗ်ာ/ေဆာင္းပါမ်ား</h2>
              <ul class="photograph_nav  wow fadeInDown">
+                <div class="file_not_exist">
+                  @if($errors->any())
+                  <h4 style="text-align: center; color: red;">{{$errors->first()}}</h4>
+                  @endif
+                </div>
                 @foreach($posts as $poem)
                 <li>
                   <div class="photo_grid">
                     <figure class="effect-layla"> 
-                      <a href="{{asset('upload/posts/'.$poem->feature_photo)}}"> 
-                        <img src="{{ asset('upload/posts/'.$poem->feature_photo) }}" alt="" >
-                      </a> 
+                        @if($poem->attach_file!='')
+                        <a href="{{route('viewfile',$poem->attach_file)}}" target="_blank"> <img src="{{ asset('upload/posts/'.$poem->feature_photo) }}" alt="" ></a> 
+                        @else
+                        <a href="#" > <img src="{{ asset('upload/posts/'.$poem->feature_photo) }}" alt="" ></a> 
+                        @endif
                     </figure>
                     <h4>{{$poem->title}}</h4>
                     <h2>
-                      <a href="{{$poem->attach_file}}" download="{{$poem->attach_file}}">
+                      <a href="{{route('downloadfile',$poem->id)}}">
                         <i class="glyphicon glyphicon-download">
                           Download
                         </i>
@@ -109,4 +116,7 @@
 @section('scripts')
 @parent
 <!-- your custom script here -->
+<script>
+  $('.file_not_exist').fadeIn().delay(3000).fadeOut();
+</script>
 @endsection

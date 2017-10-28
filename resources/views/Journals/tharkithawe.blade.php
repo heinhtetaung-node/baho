@@ -14,15 +14,24 @@
       <div class="single_post_content">
         <h2>သာကီေသြး ဂ်ာနယ္မ်ား</h2>
              <ul class="photograph_nav  wow fadeInDown">
+                <div class="file_not_exist">
+                  @if($errors->any())
+                  <h4 style="text-align: center; color: red;">{{$errors->first()}}</h4>
+                  @endif
+                </div>
                   @foreach($posts as $e)
                   <li>
                     <div class="photo_grid">
                       <figure class="effect-layla"> 
-                        <a href="{{asset('upload/posts/'.$e->feature_photo)}}"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                        @if($e->attach_file!='')
+                        <a href="{{route('viewfile',$e->attach_file)}}" target="_blank"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                        @else
+                        <a href="#" > <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
+                        @endif
                       </figure>
                       <h4>{{$e->title}}</h4>
                       <h2>
-                        <a href="{{$e->attach_file}}" download="{{$e->attach_file}}">
+                        <a href="{{route('downloadfile',$e->id)}}">
                           <i class="glyphicon glyphicon-download">
                             Download
                           </i>
@@ -108,4 +117,7 @@
 @section('scripts')
 @parent
 <!-- your custom script here -->
+<script>
+  $('.file_not_exist').fadeIn().delay(3000).fadeOut();
+</script>
 @endsection
