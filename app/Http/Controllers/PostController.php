@@ -359,7 +359,7 @@ class PostController extends Controller
         // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email'=> 'required|email|unique:contact_form',
+            // 'email'=> 'required|email|unique:contact_form',
         ]);
         
         if ($validator->fails()) {
@@ -370,20 +370,29 @@ class PostController extends Controller
 
         $arr=[
                 'name'=>$request->name,
-                'email'=>$request->email,
+                'email'=>($request->email)?$request->email:'',
                 'comment'=>($request->comment)? $request->comment:'',
             ];
         
         // dd($arr);
+        $input['email']=($request->email)?$request->email:'';
         $user=Contact::create($arr);
-
         /**tempory commit out **/
-        // Mail::send('emails.contactEmail', ['user' => $user], function($m) use ($user)
-        // {                                   
-        //     $m->from('admin@baho.com', 'Baho Admin'); 
-        //     $m->to([env("ADMIN_EMAIL", "fancystar7@gmail.com"), $user->email]);
-        //     $m->subject('Receiving Mail From Visitor : ' . $user->name); 
-        // }); 
+        /**
+        if($input['email']!=''){
+            Mail::send('emails.contactEmail', ['user' => $user], function($m) use ($user) {                                 
+                $m->from('admin@baho.com', 'Baho Admin');
+                $m->to([env("ADMIN_EMAIL", "fancystar7@gmail.com"), $user->email]);
+                $m->subject('Receiving Mail From Visitor : ' . $user->name); 
+            });     
+        }else{
+            Mail::send('emails.contactEmail', ['user' => $user], function($m) use ($user) {                                 
+                $m->from('admin@baho.com', 'Baho Admin');
+                $m->to([env("ADMIN_EMAIL", "fancystar7@gmail.com")]);
+                $m->subject('Receiving Mail From Visitor : ' . $user->name); 
+            }); 
+        } **/
+     
         return redirect()->back()->with('success','Thanks for contacting us!');
      }
 
