@@ -12,7 +12,7 @@
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">          
           <div class="single_post_content">
-            <h2>News</h2>              
+            <h2>လုပ္ငန္းစဥ္မ်ား</h2>              
                 <h1>
                     {{$post->title}}
                 </h1>
@@ -21,7 +21,7 @@
                 <div class="clear"></div>
                 <br>
                 <div class="imgl borderedbox" align="center">
-                  <img src="{{ asset('upload/posts/' . $post->detail_photo) }}" alt="" style="width: 90%" >
+                  <img src="{{ asset('upload/posts/' . $post->detail_photo) }}" alt="" style="width: 550px; height:500px" >
                 </div>
                 <div class="clear"></div>    
                 <br>
@@ -47,13 +47,14 @@
               <li>
                 
                 <div class="media"> 
-                  <a href="#" class="media-left"> 
+                  <a href="{{route('post.show',$d->id)}}" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
                   </a>
                   <div class="media-body"> 
-                    <a href="#" class="catg_title">
+                    <a href="{{route('post.show',$d->id)}}" class="catg_title">
                       {{$d->title}}
                     </a>
+                    <br>
                   <p>{{$d->short_description}}</p>
                   </div>
                 </div>
@@ -74,13 +75,14 @@
           @foreach($process as $p)
           <li>                
             <div class="media"> 
-              <a href="#" class="media-left"> 
+              <a href="{{route('post.show',$p->id)}}" class="media-left"> 
                 <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="donor photo" >
               </a>
               <div class="media-body"> 
-                <a href="#" class="catg_title">
+                <a href="{{route('post.show',$p->id)}}" class="catg_title">
                   {{$p->title}}
                 </a>
+                <br>
               <p>{{$p->short_description}}</p>
               </div>
             </div>

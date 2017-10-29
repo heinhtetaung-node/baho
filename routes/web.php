@@ -93,7 +93,7 @@ Route::get('/show/{category}', ['as' => 'user.category', 'uses' => 'PostControll
 
 Route::get('/show/{category}/{sub}', ['as' => 'user.category.sub', 'uses' => 'PostController@showPostsByCategory']);
 
-Route::get('news/{id}/show',['as'=>'news.show', 'uses'=>'PostController@show']);
+Route::get('post/{id}/show',['as'=>'post.show', 'uses'=>'PostController@show']);
 
 Route::post('/form',['as'=>'form.store', 'uses'=>'PostController@form_store']);
 
@@ -101,5 +101,7 @@ Route::post('/contact',['as'=>'contact.store', 'uses'=>'PostController@contact_s
 
 Route::get('/download/{id}', [
 	'as' => 'downloadfile', 'uses' => 'PostController@downfun']);
-Route::get('/view/{attach_file}', [
-	'as' => 'viewfile', 'uses' => 'PostController@viewfile']);
+Route::get('/view/{attach_file}', ['as' => 'viewfile', 'uses' => 'PostController@viewfile']);
+
+
+

@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         // $data['founders'] = Post::where('main_category_id',1)->where('sub_category_id',3)->orderby('id', 'desc')->limit(3)->get();
-        $data['news'] = Post::where('main_category_id',2)->orderby('id', 'desc')->limit(3)->get();
-        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
-        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
+        $data['news'] = Post::where('main_category_id',2)->orderby('id', 'desc')->limit(10)->get();
+        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(10)->get();
+        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(5)->get();
         $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
         // $data['about'] = Post::where('main_category_id',23)->where('sub_category_id',25)->orderby('id', 'asc')->limit(2)->get();
         // $data['slider'] = Post::where('main_category_id',23)->where('sub_category_id',24)->get();

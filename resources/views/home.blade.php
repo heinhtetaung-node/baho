@@ -25,11 +25,11 @@
               <li>
                 
                 <div class="media"> 
-                  <a href="#" class="media-left"> 
+                  <a href="{{route('post.show',$d->id)}}" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
                   </a>
                   <div class="media-body"> 
-                    <a href="#" class="catg_title">
+                    <a href="{{route('post.show',$d->id)}}" class="catg_title">
                       {{$d->title}}
                     </a>
                   <p>{{$d->short_description}}</p>
@@ -49,14 +49,14 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
         <div class="single_post_content">
-            <h2>News</h2>
+            <h2>သတင္းမ်ား</h2>
               @foreach($posts as $p)         
                   <div class="single_post_content">
                     <div class="single_post_content_left">
                       <ul class="business_catgnav  wow fadeInDown">
                         <li>
                           <figure class="bsbig_fig"> 
-                            <a href="{{route('news.show',$p->id)}}" class="featured_img">
+                            <a href="{{route('post.show',$p->id)}}" class="featured_img">
                               <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="" >
                             </a>
                           </figure>
@@ -68,7 +68,7 @@
                         <label>{{$p->Category->title}}>>{{$p->SubCategory->title}}</label>
                         <br>
                         <small>Post on:&nbsp; {{$p->created_at->toFormattedDateString()}}</small>
-                        <figcaption> <a href="{{route('news.show',$p->id)}}">  {{$p->title}} </a> </figcaption>
+                        <figcaption> <a href="{{route('post.show',$p->id)}}">  {{$p->title}} </a> </figcaption>
                         <p>{{$p->short_description}}</p>                 
                       </figure>
                     </div>                      
@@ -86,13 +86,14 @@
               @foreach($process as $p)
               <li>                
                 <div class="media"> 
-                  <a href="#" class="media-left"> 
+                  <a href="{{route('post.show',$p->id)}}" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="donor photo" >
                   </a>
                   <div class="media-body"> 
-                    <a href="#" class="catg_title">
+                    <a href="{{route('post.show',$p->id)}}" class="catg_title">
                       {{$p->title}}
                     </a>
+                    <br>
                   <p>{{$p->short_description}}</p>
                   </div>
                 </div>

@@ -14,7 +14,24 @@
                   <div class="single_post_content">
             <h2>ျမန္မာႏုိင္ငံရွိတုိင္းေဒသၾကီးမ်ား</h2>
              <ul class="photograph_nav  wow fadeInDown">
-              <li>
+               @foreach($posts as $n)
+                <li>
+                  <div class="photo_grid">
+                    <figure class="effect-layla"> 
+                      <a class="fancybox-buttons" data-fancybox-group="button" href="{{route('post.show',$n->id)}}" title="{{ $n->title }}">
+                         <img src="{{ asset('upload/posts/'.$n->feature_photo) }}" alt="" >
+                      </a> 
+                    </figure>
+                    <br>
+
+                    <a href="{{route('post.show',$n->id)}}" class="catg_title" title="">
+                     <h4> {{$n->title}}</h4>
+                    </a>
+
+                  </div>
+                </li>
+                @endforeach
+             <!--  <li>
                 <div class="photo_grid">
                   <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img2.jpg" alt=""/></a> </figure>
                   <h4>တနသၤာရီတုိင္း</h4>
@@ -55,7 +72,7 @@
                   <figure class="effect-layla"> <a href="#"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
                   <h4>မေကြးတုိင္း</h4>
                 </div>
-              </li>
+              </li> -->
             </ul>
           </div>
     </div>
@@ -72,11 +89,11 @@
               <li>
                 
                 <div class="media"> 
-                  <a href="#" class="media-left"> 
+                  <a href="{{route('post.show',$d->id)}}" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
                   </a>
                   <div class="media-body"> 
-                    <a href="#" class="catg_title">
+                    <a href="{{route('post.show',$d->id)}}" class="catg_title">
                       {{$d->title}}
                     </a>
                   <p>{{$d->short_description}}</p>
@@ -91,7 +108,7 @@
   </aside>
 </div>
 
-  <div class="col-lg-4 col-md-4 col-sm-4">
+  <div class="col-lg-4 col-md-4 col-sm-4" style="float: right;">
     <aside class="right_content">
       <div class="single_sidebar">
         <h2>လုပ္ငန္းစဥ္မ်ား</h2>
@@ -99,13 +116,13 @@
           @foreach($process as $p)
           <li>                
             <div class="media"> 
-              <a href="#" class="media-left"> 
+              <a href="{{route('post.show',$p->id)}}" class="media-left"> 
                 <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="donor photo" >
               </a>
               <div class="media-body"> 
-                <a href="#" class="catg_title">
+                <a href="{{route('post.show',$p->id)}}" class="catg_title">
                   {{$p->title}}
-                </a>
+                </a><br>
               <p>{{$p->short_description}}</p>
               </div>
             </div>

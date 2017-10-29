@@ -8,10 +8,12 @@
             @foreach($founders as $f)
             <li>
               <div class="media wow fadeInDown"> 
-                <a href="#" class="media-left"> 
+                <a href="{{route('post.show',$f->id)}}" class="media-left"> 
                   <img src="{{ asset('upload/posts/'.$f->feature_photo) }}" alt="founder photo" >
                 </a>
-                <div class="media-body"> <a href="#" class="catg_title">{{$f->title}}</a><p>{{$f->short_description}}</p></div>
+                <div class="media-body"> 
+                  <a href="{{route('post.show',$f->id)}}" style="color:#66ce09;">{{$f->title}}</a>
+                  <p>{{$f->short_description}}</p></div>
               </div>
             </li>
             @endforeach

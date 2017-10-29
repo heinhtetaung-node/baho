@@ -61,8 +61,8 @@ class PostController extends Controller
 
         $posts = $posts->orderby('updated_at', 'desc')->paginate(12);
         // var_dump($posts);
-        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
-        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
+        $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(10)->get();
+        $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(5)->get();
         $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
 
         $view = str_replace(' ', '', $category.$subview);
@@ -303,7 +303,7 @@ class PostController extends Controller
         $data['donor'] = Post::where('main_category_id',39)->orderby('id', 'desc')->limit(3)->get();
         $data['process'] = Post::where('main_category_id',40)->orderby('id', 'desc')->limit(3)->get();
         $data['founders'] = Post::where('main_category_id',41)->orderby('id', 'desc')->limit(3)->get();
-        return view('news_show',[
+        return view('post_show',[
                 'post'=>$post,
                 'donors'=>$data['donor'],
                 'process'=>$data['process'],
@@ -424,4 +424,5 @@ class PostController extends Controller
             ]);
         }
     }
+
 }

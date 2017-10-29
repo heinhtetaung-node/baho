@@ -57,11 +57,11 @@
               <li>
                 
                 <div class="media"> 
-                  <a href="#" class="media-left"> 
+                  <a href="{{route('post.show',$d->id)}}" class="media-left"> 
                     <img src="{{ asset('upload/posts/'.$d->feature_photo) }}" alt="donor photo" >
                   </a>
                   <div class="media-body"> 
-                    <a href="#" class="catg_title">
+                    <a href="{{route('post.show',$d->id)}}" class="catg_title">
                       {{$d->title}}
                     </a>
                   <p>{{$d->short_description}}</p>
@@ -84,11 +84,11 @@
           @foreach($process as $p)
           <li>                
             <div class="media"> 
-              <a href="#" class="media-left"> 
+              <a href="{{route('post.show',$p->id)}}" class="media-left"> 
                 <img src="{{ asset('upload/posts/'.$p->feature_photo) }}" alt="donor photo" >
               </a>
               <div class="media-body"> 
-                <a href="#" class="catg_title">
+                <a href="{{route('post.show',$p->id)}}" class="catg_title">
                   {{$p->title}}
                 </a>
               <p>{{$p->short_description}}</p>

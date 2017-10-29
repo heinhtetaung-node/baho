@@ -11,47 +11,68 @@
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">          
-      <div class="single_post_content">
-        <h2>ဆရာေတာ္ၾကီး၏ အဘိဓမၼာပုိ႔ခ်ခ်က္စာအုပ္မ်ား</h2>
-        <ul class="photograph_nav  wow fadeInDown">
-          <div class="file_not_exist">
-            @if($errors->any())
-            <h4 style="text-align: center; color: red;">{{$errors->first()}}</h4>
-            @endif
+          <div class="single_post_content">
+              <?php $id=$post->Category->id; ?>
+              @if($id==34)
+                <h2>ျမန္မာႏုိင္ငံရွိတုိင္းေဒသၾကီးမ်ား</h2> 
+              @elseif($id==2)
+                <h2>သတင္းမ်ား</h2>  
+              @elseif($id==39)
+                <h2>အလွဴရွင္မ်ား</h2>  
+              @elseif($id==40)
+                <h2>လုပ္ငန္းစဥ္မ်ား</h2> 
+              @elseif($id==41)
+                <h2>တည္ေထာင္သူမ်ား</h2> 
+              @endif
+                <h1>
+                    {{$post->title}}
+                </h1>
+                <hr>        
+                {{$post->short_description}}
+                <div class="clear"></div>
+                <br>
+                <div class="imgl borderedbox" align="center">
+                  <img src="{{ asset('upload/posts/' . $post->detail_photo) }}" alt="" style="width: 90%" >
+                </div>
+                <div class="clear"></div>    
+                <br>
+                <br>
+                <p align="justify">
+                    {{$post->detail_description}}
+                </p>
+                <br>
+                <br>
+                <div class="clear"></div>    
+                <p align="justify">
+                    {{$post->custom_field1}}
+                </p>
+                <div class="clear"></div>    
+                <p align="justify">
+                    {{$post->custom_field2}}
+                </p>
+                <div class="clear"></div>   
+                <p align="justify">
+                    {{$post->custom_field3}}
+                </p>
+                <div class="clear"></div>  
+                <p align="justify">
+                    {{$post->custom_field4}}
+                </p>
+                <div class="clear"></div>  
+                <p align="justify">
+                    {{$post->custom_field5}}
+                </p>
+                <div class="clear"></div>
           </div>
-          @foreach($posts as $e)
-          <li>
-            <div class="photo_grid">
-              <figure class="effect-layla"> 
-                @if($e->attach_file!='')
-                <a href="{{route('viewfile',$e->attach_file)}}" target="_blank"> <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
-                @else
-                 <a href="#" > <img src="{{ asset('upload/posts/'.$e->feature_photo) }}" alt="" ></a> 
-                @endif
-              </figure>
-              <h4>{{$e->title}}</h4>
-              <h2>
-                <!-- <a href="{{route('downloadfile',$e->id)}}" download="{{$e->attach_file}}"> -->
-                <a href="{{route('downloadfile',$e->id)}}">
-                  <i class="glyphicon glyphicon-download">
-                    Download
-                  </i>
-              </a>
-              </h2>
-            </div>
-          </li>
-          @endforeach
-        </ul>
-      </div>
-      {{$posts->render()}}
     </div>
   </div>
-<div class="col-lg-4 col-md-4 col-sm-4">
-  <aside class="right_content">
-    <div class="latest_post">
-      <h2>အလွဴရွင္မ်ား</h2>
-      <div class="latest_post_container">
-        <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <aside class="right_content">
+      <div class="latest_post">
+        <h2>အလွဴရွင္မ်ား</h2>
+        <div class="latest_post_container">
+          <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
         <ul class="latest_postnav">
            @foreach($donors as $d)
               <li>
@@ -70,11 +91,11 @@
               </li>
               @endforeach
         </ul>
-        <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+          <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+        </div>
       </div>
-    </div>
-  </aside>
-</div>
+    </aside>
+  </div>
 
   <div class="col-lg-4 col-md-4 col-sm-4" style="float: right; margin-top: 50px;">
     <aside class="right_content">
@@ -90,7 +111,7 @@
               <div class="media-body"> 
                 <a href="{{route('post.show',$p->id)}}" class="catg_title">
                   {{$p->title}}
-                </a>
+                </a><br>
               <p>{{$p->short_description}}</p>
               </div>
             </div>
@@ -117,7 +138,4 @@
 @section('scripts')
 @parent
 <!-- your custom script here -->
-<script>
-  $('.file_not_exist').fadeIn().delay(3000).fadeOut();
-</script>
 @endsection

@@ -13,6 +13,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.css') }}">
+    <style type="text/css" media="screen">
+      .catg_title{color:#9b0c15 ;}
+    </style>
     @show
 
     <script type="text/javascript">
